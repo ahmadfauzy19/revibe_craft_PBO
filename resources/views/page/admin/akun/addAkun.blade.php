@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('home') }}">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item active">Tambah Akun</li>
+                    <li class="breadcrumb-item active">Tambah Tutorial</li>
                 </ol>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Informasi Data Diri</h3>
+                        <h3 class="card-title">Input Tutorial</h3>
 
                         <div class="card-tools">
                             <button
@@ -49,13 +49,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputName">Nama</label>
+                            <label for="inputName">Judul</label>
                             <input
                                 type="text"
                                 id="inputName"
                                 name="name"
                                 class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Masukkan Nama"
+                                placeholder="Masukkan Judul"
                                 value="{{ old('name') }}"
                                 required="required"
                                 autocomplete="name">
@@ -66,7 +66,41 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail">Email</label>
+                            <label for="inputDeskripsi">Deskripsi</label>
+                            <textarea
+                                id="inputDeskripsi"
+                                name="deskripsi"
+                                class="form-control @error('deskripsi') is-invalid @enderror"
+                                placeholder="Masukkan Deskripsi"
+                                required="required"
+                                autocomplete="deskripsi"
+                            >{{ old('deskripsi') }}</textarea>
+                            @error('deskripsi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputEmail">Bahan</label>
+                            <input
+                                type="text"
+                                id="inputBahan"
+                                name="bahan"
+                                class="form-control @error('email') is-invalid @enderror"
+                                placeholder="Masukkan Bahan"
+                                value="{{ old('bahan') }}"
+                                required="required"
+                                autocomplete="bahan">
+                            @error('bahan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Langkah</label>
                             <input
                                 type="email"
                                 id="inputEmail"
@@ -81,9 +115,9 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                        </div>
+
                         <div class="form-group">
-                            <label for="inputFoto">Foto Profil</label>
+                            <label for="inputFoto">Foto Barang</label>
                             <div class="row">
                                 <div class="col-md-4">
                                     <img
@@ -113,7 +147,7 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-            </div>
+            {{-- </div>
             <div class="col-md-6">
                 <div class="card card-secondary">
                     <div class="card-header">
@@ -170,7 +204,7 @@
             </div>
         </div>
     </form>
-</section>
+</section> --}}
 <!-- /.content -->
 
 @endsection 

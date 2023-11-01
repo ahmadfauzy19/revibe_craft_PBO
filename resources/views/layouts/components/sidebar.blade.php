@@ -7,23 +7,24 @@ $links = [
         "is_multi" => false
     ],
     [
-        "text" => "Kelola Akun",
+        "text" => "Kelola Tutorial",
         "icon" => "fas fa-users",
         "is_multi" => true,
         "href" => [
             [
-                "section_text" => "Data Akun",
+                "section_text" => "Data Tutorial",
                 "section_icon" => "far fa-circle",
                 "section_href" => route('akun.index')
             ],
             [
-                "section_text" => "Tambah Akun",
+                "section_text" => "Tambah Tutorial",
                 "section_icon" => "far fa-circle",
                 "section_href" => route('akun.add')
             ]
         ]
-    ]
+    ], 
 ];
+
 $navigation_links = json_decode(json_encode($links));
 @endphp
   <!-- Main Sidebar Container -->
@@ -31,7 +32,7 @@ $navigation_links = json_decode(json_encode($links));
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="{{ asset('vendor/adminlte3/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Revibe Craft</span>
     </a>
 
     <!-- Sidebar -->
