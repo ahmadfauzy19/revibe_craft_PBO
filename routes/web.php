@@ -4,6 +4,7 @@ use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ControllerTutorial;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,16 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get','post'],'{id}/ubah', 'ubahAkun')->name('edit');
             Route::delete('{id}/hapus', 'hapusAkun')->name('delete');
         });
+// Route::resource('tutorial',TutorialController::class);
+// Route::post('/addTutorial', [ControllerTutorial::class, 'store'])->name('addTutorial.store');
+Route::get('dashboard/admin/addTutorial', [ControllerTutorial::class, 'create'])->name('addTutorial.create');
+Route::post('dashboard/admin/addTutorial', [ControllerTutorial::class, 'store'])->name('addTutorial.store');
+Route::post('tutorial/dataTable', 'ControllerTutorial@dataTable')->name('tutorial.dataTable');
+
+
+
+
+
+
+
 });

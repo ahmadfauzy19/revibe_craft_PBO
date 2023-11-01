@@ -52,15 +52,18 @@
         </div>
         <div class="card-body p-0" style="margin: 20px">
             <table
-                id="previewAkun"
+                id="previewTutorial"
                 class="table table-striped table-bordered display"
                 style="width:100%">
                 <thead>
                     <tr>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Foto</th>
-                        <th>Action</th>
+                    <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Bahan</th>
+            <th>Alat</th>
+            <th>Langkah Tutorial</th>
+            <th>Foto</th>
+            <th>Action</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -78,13 +81,13 @@
 <script
     type="text/javascript"
     src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script>
+<!-- <script>
     $(document).ready(function () {
-                $('#previewAkun').DataTable({
+                $('#previewTutorial').DataTable({
                     "serverSide": true,
                     "processing": true,
                     "ajax": {
-                        "url": "{{ route('akun.dataTable') }}",
+                        "url": "{{ route('tutorial.dataTable') }}",
                         "dataType": "json",
                         "type": "POST",
                         "data": {
@@ -92,15 +95,13 @@
                         }
                     },
                     "columns": [
-                        {
-                            "data": "name"
-                        }, {
-                            "data": "email"
-                        }, {
-                            "data": "user_image"
-                        }, {
-                            "data": "options"
-                        }
+                        { "data": "judul_tutorial" },
+                    { "data": "deskripsi" },
+                    { "data": "bahan" },
+                    { "data": "alat" },
+                    { "data": "langkah_tutorial" },
+                    { "data": "foto" },
+                    { "data": "options" }
                     ],
                     "language": {
                         "decimal": "",
@@ -130,39 +131,74 @@
                 });
 
                 // hapus data
-                $('#previewAkun').on('click', '.hapusData', function () {
-                    var id = $(this).data("id");
-                    var url = $(this).data("url");
-                    Swal
-                        .fire({
-                            title: 'Apa kamu yakin?',
-                            text: "Kamu tidak akan dapat mengembalikan ini!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Ya, hapus!',
-                            cancelButtonText: 'Batal'
-                        })
-                        .then((result) => {
-                            if (result.isConfirmed) {
-                                // console.log();
-                                $.ajax({
-                                    url: url,
-                                    type: 'DELETE',
-                                    data: {
-                                        "id": id,
-                                        "_token": "{{csrf_token()}}"
-                                    },
-                                    success: function (response) {
-                                        // console.log();
-                                        Swal.fire('Terhapus!', response.msg, 'success');
-                                        $('#previewAkun').DataTable().ajax.reload();
-                                    }
-                                });
-                            }
-                        })
-                });
+                // $('#previewTutorial').on('click', '.hapusData', function () {
+                //     var id = $(this).data("id");
+                //     var url = $(this).data("url");
+                //     Swal
+                //         .fire({
+                //             title: 'Apa kamu yakin?',
+                //             text: "Kamu tidak akan dapat mengembalikan ini!",
+                //             icon: 'warning',
+                //             showCancelButton: true,
+                //             confirmButtonColor: '#3085d6',
+                //             cancelButtonColor: '#d33',
+                //             confirmButtonText: 'Ya, hapus!',
+                //             cancelButtonText: 'Batal'
+                //         })
+                //         .then((result) => {
+                //             if (result.isConfirmed) {
+                //                 // console.log();
+                //                 $.ajax({
+                //                     url: url,
+                //                     type: 'DELETE',
+                //                     data: {
+                //                         "id": id,
+                //                         "_token": "{{csrf_token()}}"
+                //                     },
+                //                     success: function (response) {
+                //                         // console.log();
+                //                         Swal.fire('Terhapus!', response.msg, 'success');
+                //                         $('#previewAkun').DataTable().ajax.reload();
+                //                     }
+                //                 });
+                //             }
+                //         })
+                // });
         });
+</script> -->
+<script>
+    $(document).ready(function () {
+        $('#previewTutorial').DataTable({
+            "serverSide": true,
+            "processing": true,
+            "ajax": {
+                "url": "{{ route('tutorial.dataTable') }}",
+                "dataType": "json",
+                "type": "POST",
+                "data": {
+                    _token: "{{ csrf_token() }}"
+                }
+            },
+            "columns": [
+                { "data": "judul_tutorial" },
+                { "data": "deskripsi" },
+                { "data": "bahan" },
+                { "data": "alat" },
+                { "data": "langkah_tutorial" },
+                { 
+                    "data": "foto",
+                    "render": function (data) {
+                        return '<img src="' + data + '" alt="Tutorial Image" width="100px">';
+                    }
+                },
+                { 
+                    "data": "options",
+                    "orderable": false,
+                    "searchable": false
+                }
+            ]
+        });
+    });
 </script>
+
 @endsection

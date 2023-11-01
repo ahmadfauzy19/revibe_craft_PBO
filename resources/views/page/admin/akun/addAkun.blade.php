@@ -29,7 +29,7 @@
         {{ session('status') }}
       </div>
     @endif
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="{{ route('addTutorial.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -52,8 +52,8 @@
                             <label for="inputName">Judul</label>
                             <input
                                 type="text"
-                                id="inputName"
-                                name="name"
+                                id="inputJudul"
+                                name="judul"
                                 class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Masukkan Judul"
                                 value="{{ old('name') }}"
@@ -83,14 +83,13 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="inputEmail">Bahan</label>
+                            <label for="inputBahan">Bahan</label>
                             <input
                                 type="text"
                                 id="inputBahan"
                                 name="bahan"
-                                class="form-control @error('email') is-invalid @enderror"
+                                class="form-control @error('bahan') is-invalid @enderror"
                                 placeholder="Masukkan Bahan"
-                                value="{{ old('bahan') }}"
                                 required="required"
                                 autocomplete="bahan">
                             @error('bahan')
@@ -101,14 +100,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputEmail">Alat</label>
+                            <label for="inputAlat">Alat</label>
                             <input
                                 type="text"
                                 id="inputAlat"
                                 name="alat"
-                                class="form-control @error('email') is-invalid @enderror"
+                                class="form-control @error('alat') is-invalid @enderror"
                                 placeholder="Masukkan alat"
-                                value="{{ old('alat') }}"
                                 required="required"
                                 autocomplete="alat">
                             @error('alat')
@@ -124,9 +122,8 @@
                                 type="text"
                                 id="inputLangkah"
                                 name="langkah"
-                                class="form-control @error('email') is-invalid @enderror"
+                                class="form-control @error('langkah') is-invalid @enderror"
                                 placeholder="Masukkan langkah pembuatan"
-                                value="{{ old('langkah') }}"
                                 required="required"
                                 autocomplete="langkah">
                             @error('email')
@@ -149,7 +146,7 @@
                                     <input
                                         type="file"
                                         id="inputFoto"
-                                        name="user_image"
+                                        name="foto"
                                         accept="image/*"
                                         class="form-control @error('user_image') is-invalid @enderror"
                                         placeholder="Upload foto profil">
@@ -166,6 +163,13 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="{{ route('home') }}" class="btn btn-secondary mx-2">Cancel</a>
+                        <button type="submit" class="btn btn-success mx-2">Tambah Akun</button>
+                    </div>
+                </div>
+            </form>
             {{-- </div>
             <div class="col-md-6">
                 <div class="card card-secondary">

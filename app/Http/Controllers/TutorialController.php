@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class TutorialController extends Controller
 {
-    public function index()
+    public function create()
     {
         return view('akun.addAkun');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         if ($request->isMethod('post')) {
             $this->validate($request, [
@@ -33,6 +33,7 @@ class TutorialController extends Controller
                 $gambar = $request->file('gambar');
                 $gambarPath = $gambar->store('gambar');
             }
+            dd($request);
 
             Tutorial::create([
                 // 'user_id' => auth()->id(), // Assuming you have user authentication
