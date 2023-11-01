@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * text=auto
 
 *.blade.php diff=html
@@ -8,3 +9,6 @@
 
 /.github export-ignore
 CHANGELOG.md export-ignore
+=======
+composer.lock -text
+>>>>>>> 2e6281d89a87a37b1225035441723a2ecbf3a7db
