@@ -99,17 +99,36 @@
                             </span>
                             @enderror
                         </div>
+
                         <div class="form-group">
-                            <label for="inputEmail">Langkah</label>
+                            <label for="inputEmail">Alat</label>
                             <input
-                                type="email"
-                                id="inputEmail"
-                                name="email"
+                                type="text"
+                                id="inputAlat"
+                                name="alat"
                                 class="form-control @error('email') is-invalid @enderror"
-                                placeholder="Masukkan Email"
-                                value="{{ old('email') }}"
+                                placeholder="Masukkan alat"
+                                value="{{ old('alat') }}"
                                 required="required"
-                                autocomplete="email">
+                                autocomplete="alat">
+                            @error('alat')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputLangkah">Langkah</label>
+                            <input
+                                type="text"
+                                id="inputLangkah"
+                                name="langkah"
+                                class="form-control @error('email') is-invalid @enderror"
+                                placeholder="Masukkan langkah pembuatan"
+                                value="{{ old('langkah') }}"
+                                required="required"
+                                autocomplete="langkah">
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -198,9 +217,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <a href="{{ route('home') }}" class="btn btn-secondary">Cancel</a>
-                <input type="submit" value="Tambah Akun" class="btn btn-success float-right">
+            <div class="col-12 text-center">
+                <a href="{{ route('home') }}" class="btn btn-secondary mx-2">Cancel</a>
+                <button type="submit" class="btn btn-success mx-2">Tambah Akun</button>
             </div>
         </div>
     </form>
