@@ -10,5 +10,12 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 =======
+<<<<<<< HEAD
+=======
+composer.lock -text
+>>>>>>> 2e6281d89a87a37b1225035441723a2ecbf3a7db
+
+
+>>>>>>> 90d2b9320f6e87e012fb559aaa00256b91f0e406
 composer.lock -text
 >>>>>>> 2e6281d89a87a37b1225035441723a2ecbf3a7db
