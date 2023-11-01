@@ -9,5 +9,5 @@ class Tutorial extends Model
 {
     use HasFactory;
     protected $table = 'tutorial';
-    protected $fillable = ['user_id', 'judul_tutorial', 'deskripsi', 'bahan', 'langkah_tutorial' ];
+    protected $fillable = ['judul_tutorial', 'deskripsi', 'bahan','alat', 'langkah_tutorial','foto' ];
 }

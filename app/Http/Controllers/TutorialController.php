@@ -13,8 +13,7 @@ class TutorialController extends Controller
 {
     public function index()
     {
-        $tutorials = Tutorial::all();
-        return view('tutorial.index', ['tutorials' => $tutorials]);
+        return view('akun.addAkun');
     }
 
     public function create(Request $request)
@@ -24,22 +23,31 @@ class TutorialController extends Controller
                 'judul_tutorial' => 'required|string|max:255',
                 'deskripsi' => 'required|string',
                 'bahan' => 'required|string',
-                'langkah_tutorial' => 'required|array',
-                'langkah_tutorial.*' => 'string',
+                'alat' => 'required|string',
+                'langkah_tutorial' => 'required|string',
+                'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
+            // Simpan data dalam tabel 'profile'
+            if ($request->file('foto')) {
+                $gambar = $request->file('gambar');
+                $gambarPath = $gambar->store('gambar');
+            }
+
             Tutorial::create([
-                'user_id' => auth()->id(), // Assuming you have user authentication
+                // 'user_id' => auth()->id(), // Assuming you have user authentication
                 'judul_tutorial' => $request->judul_tutorial,
                 'deskripsi' => $request->deskripsi,
                 'bahan' => $request->bahan,
+                'alat' => $request->alat,
                 'langkah_tutorial' => $request->langkah_tutorial,
+                'foto' => $gambarPath,
             ]);
-
+    
             return redirect()->route('tutorial.index')->with('status', 'Tutorial has been created');
+        
         }
-
-        return view('tutorial.create');
+        // return view('tutorial.create');
     }
 
     public function edit($id)
